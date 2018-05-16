@@ -7,7 +7,6 @@ from tqdm import tqdm
 import cfg
 from label import shrink
 
-
 def batch_reorder_vertexes(xy_list_array):
     reorder_xy_list_array = np.zeros_like(xy_list_array)
     for xy_list, i in zip(xy_list_array, range(len(xy_list_array))):

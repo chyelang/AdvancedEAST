@@ -1,2 +1,4 @@
 .idea/
 saved_model/
+icpr2/
+*pycache*
