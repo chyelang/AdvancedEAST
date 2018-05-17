@@ -1,11 +1,5 @@
 import os
-
-from keras.callbacks import EarlyStopping, ModelCheckpoint
-from keras.optimizers import Adam
 import argparse
-from network import East
-from losses import quad_loss
-from data_generator import gen
 
 parser = argparse.ArgumentParser(description='options')
 parser.add_argument('--section', type=str, default='local',
@@ -18,6 +12,14 @@ if args.section == 'local':
     import cfg_local as cfg
 if args.section == 'server':
     import cfg_server as cfg
+
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.optimizers import Adam
+from network import East
+from losses import quad_loss
+from data_generator import gen
+
+
 
 east = East()
 east_network = east.east_network()
