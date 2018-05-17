@@ -1,3 +1,4 @@
+import os
 train_task_id = '2T512'
 initial_epoch = 0
 epoch_num = 24
@@ -58,6 +59,13 @@ model_weights_path = '/scratch/xzou/AdvancedEAST/model/weights_%s.{epoch:03d}-{v
 saved_model_file_path = '/scratch/xzou/AdvancedEAST/saved_model/east_model_%s.h5' % train_task_id
 saved_model_weights_file_path = '/scratch/xzou/AdvancedEAST/saved_model/east_model_weights_%s.h5'\
                                 % train_task_id
+
+if not os.path.exists(os.path.dirname(model_weights_path)):
+    os.mkdir(os.path.dirname(model_weights_path))
+if not os.path.exists(os.path.dirname(saved_model_file_path)):
+    os.mkdir(os.path.dirname(saved_model_file_path))
+if not os.path.exists(os.path.dirname(saved_model_weights_file_path)):
+    os.mkdir(os.path.dirname(saved_model_weights_file_path))
 
 pixel_threshold = 0.9
 side_vertex_pixel_threshold = 0.9

@@ -1,5 +1,3 @@
-import argparse
-
 import numpy as np
 from PIL import Image, ImageDraw
 from keras.preprocessing import image
