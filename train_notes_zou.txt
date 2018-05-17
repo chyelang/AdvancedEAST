@@ -1,0 +1,53 @@
+0517
+****************
+Epoch 1/5
+1125/1125 [==============================] - 707s 629ms/step - loss: 0.5460 - val_loss: 0.4772
+
+Epoch 00001: val_loss improved from inf to 0.47721, saving model to /scratch/xzou/AdvancedEAST/model/w
+eights_0Test256.001-0.477.h5
+Epoch 2/5
+1125/1125 [==============================] - 702s 624ms/step - loss: 0.4429 - val_loss: 0.4137
+
+Epoch 00002: val_loss improved from 0.47721 to 0.41365, saving model to /scratch/xzou/AdvancedEAST/mod
+el/weights_0Test256.002-0.414.h5
+Epoch 3/5
+1125/1125 [==============================] - 702s 624ms/step - loss: 0.3913 - val_loss: 0.4020 ***
+
+Epoch 00003: val_loss improved from 0.41365 to 0.40198, saving model to /scratch/xzou/AdvancedEAST/mo$
+el/weights_0Test256.003-0.402.h5
+Epoch 4/5
+1125/1125 [==============================] - 702s 624ms/step - loss: 0.3630 - val_loss: 0.4080
+
+Epoch 00004: val_loss did not improve
+Epoch 5/5
+1125/1125 [==============================] - 702s 624ms/step - loss: 0.3378 - val_loss: 0.4124
+
+Epoch 00005: val_loss did not improve
+Epoch 00005: early stopping
+
+*****************
+Epoch 1/24
+4500/4500 [==============================] - 3539s 787ms/step - loss: 0.5365 - val_loss: 0.4476
+
+Epoch 00001: val_loss improved from inf to 0.44757, saving model to /scratch/xzou/AdvancedEAST/model/weights_1T512.001-0.448.h5
+Epoch 2/24
+4500/4500 [==============================] - 3532s 785ms/step - loss: 0.4159 - val_loss: 0.4041
+
+Epoch 00002: val_loss improved from 0.44757 to 0.40407, saving model to /scratch/xzou/AdvancedEAST/model/weights_1T512.002-0.404.h5
+Epoch 3/24
+4500/4500 [==============================] - 3530s 784ms/step - loss: 0.3700 - val_loss: 0.3834
+
+Epoch 00003: val_loss improved from 0.40407 to 0.38344, saving model to /scratch/xzou/AdvancedEAST/model/weights_1T512.003-0.383.h5
+Epoch 4/24
+4500/4500 [==============================] - 3530s 785ms/step - loss: 0.3485 - val_loss: 0.3702 ****
+
+Epoch 00004: val_loss improved from 0.38344 to 0.37019, saving model to /scratch/xzou/AdvancedEAST/model/weights_1T512.004-0.370.h5
+Epoch 5/24
+4500/4500 [==============================] - 3534s 785ms/step - loss: 0.3305 - val_loss: 0.3790
+
+Epoch 00005: val_loss did not improve
+Epoch 6/24
+4500/4500 [==============================] - 3536s 786ms/step - loss: 0.3136 - val_loss: 0.3937
+
+Epoch 00006: val_loss did not improve
+Epoch 00006: early stopping

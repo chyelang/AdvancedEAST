@@ -7,7 +7,6 @@ parser.add_argument('--section', type=str, default='local',
                     help='cfg to load')
 
 args = parser.parse_args()
-os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 if args.section == 'local':
     import cfg_local as cfg
 if args.section == 'server':
