@@ -1,5 +1,5 @@
 import os
-train_task_id = '0T256'
+train_task_id = '0Test256'
 initial_epoch = 0
 epoch_num = 24
 lr = 1e-3

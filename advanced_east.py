@@ -1,11 +1,11 @@
 import os
 import argparse
+os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
 parser = argparse.ArgumentParser(description='options')
 parser.add_argument('--section', type=str, default='local',
                     help='cfg to load')
-parser.add_argument('--gpu', type=str, default='0',
-                    help='gpu to use')
+
 args = parser.parse_args()
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 if args.section == 'local':

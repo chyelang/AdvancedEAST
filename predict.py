@@ -3,16 +3,16 @@ from PIL import Image, ImageDraw
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
 
-from label import point_inside_of_quad
-from network import East
-from preprocess import resize_image
-from nms import nms
-
 import argparse
 parser = argparse.ArgumentParser(description='options')
 parser.add_argument('--section', type=str, default='local',
                     help='cfg to load')
 args = parser.parse_args()
+
+from label import point_inside_of_quad
+from network import East
+from preprocess import resize_image
+from nms import nms
 
 if args.section == 'local':
     import cfg_local as cfg
@@ -133,22 +133,10 @@ def predict_txt(east_detect, img_path, txt_path, pixel_threshold, quiet=False):
         with open(txt_path, 'w') as f_txt:
             f_txt.writelines(txt_items)
 
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--path', '-p',
-                        default='demo/012.png',
-                        help='image path')
-    parser.add_argument('--threshold', '-t',
-                        default=cfg.pixel_threshold,
-                        help='pixel activation threshold')
-    return parser.parse_args()
-
-
 if __name__ == '__main__':
-    args = parse_args()
-    img_path = args.path
-    threshold = float(args.threshold)
+    # create demo_tmp dir to contain tmp images
+    img_path = 'demo_tmp/005.png'
+    threshold = cfg.pixel_threshold
     print(img_path, threshold)
 
     east = East()

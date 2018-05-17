@@ -1,4 +1,6 @@
 # AdvancedEAST
+modified by chyelang
+
 AdvancedEAST is an algorithm used for Scene image text detect,
 which is primarily based on
 [EAST:An Efficient and Accurate Scene Text Detector](https://arxiv.org/abs/1704.03155v2),
@@ -23,11 +25,11 @@ AdvancedEast has obtained much better prediction accuracy then East,
 especially on long text. Since East calculates final vertexes coordinates with
 weighted mean values of predicted vertexes coordinates of all pixels. It is too
 difficult to predict the 2 vertexes from the other side of the quadrangle.
-See East limitations picked from original paper bellow.
-![East limitations](image/East.limitations.png "East limitations")
 
 # project files
-* config file:cfg.py,control parameters
+* config file:cfg_local.py and cfg_server.py, control parameters.
+you need to use --section server argument to use cfg_server.py, or cfg_local is used by default.
+如果你还有别的cfg文件，你可以将其命名为别的名字，要用时再为其重命名为cfg_server.py
 * pre-process data:
     preprocess.py,resize image
 * label data:
@@ -58,7 +60,6 @@ See East limitations picked from original paper bellow.
 * numpy 1.14.1+
 * tqdm 4.19.7+
 * h5py
-* PIL
 * tqdm
 
 # training
@@ -67,12 +68,16 @@ copy images to root dir, and copy txts to root dir,
 data format details could refer to 'ICPR MTWI 2018 挑战赛二：网络图像的文本检测',
 [Link](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100066.0.0.3bcad780oQ9Ce4&raceId=231651)
 * modify config params in cfg_local.py or config_server.py, depending on the machine you are running your codes, see default values.
-### you can specify --section local/server --gpu 0/1 for the following commands, or the default --section local --gpu 0 will be used. ###
+you can specify --section local/server for the following commands, or the default --section local will be used.
+if you want to specify a gpu to use, you need to modify Line 3 in advanced_east.py
 * python preprocess.py, resize image to 256*256,384*384,512*512,640*640,736*736,
-and train respectively could speed up training process.
+and train respectively could speed up training process. 每次预测只能选择一个图片尺寸？
 * python label.py
 * python advanced_east.py
-* python predict.py -p demo/001.png, to predict
+* python predict.py to predict. You may need to specify a valid image path in main function of predict.py. 该函数可以在一张图上使用你的模型做预测，
+给出两张图：一张是文字segmentation，另一张是用四边形框起来的文字。
+* python tianchi_submit.py to get submission file for test sets. 你需要先把icpr_mtwi_task2/image_test拷贝到cfg.data_dir之下
+* python tianchi_check.py to verify the prediction performance. you might need to read the code to prepare some data
 
 # License
 The codes are released under the MIT License.
