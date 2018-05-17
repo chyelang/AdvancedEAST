@@ -40,6 +40,7 @@ def cut_text_line(geo, scale_ratio_w, scale_ratio_h, im_array, img_path, s):
 
 
 def predict(east_detect, img_path, pixel_threshold, quiet=False):
+    # just for a single image?
     img = image.load_img(img_path)
     d_wight, d_height = resize_image(img, cfg.max_predict_img_size)
     img = img.resize((d_wight, d_height), Image.NEAREST).convert('RGB')

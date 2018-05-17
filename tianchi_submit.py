@@ -20,8 +20,11 @@ if __name__ == '__main__':
     east_detect = east.east_network()
     east_detect.load_weights(cfg.saved_model_weights_file_path)
 
-    image_test_dir = os.path.join(cfg.data_dir, 'icpr_mtwi_task3/image_test/')
-    txt_test_dir = os.path.join(cfg.data_dir, 'icpr_mtwi_task3/txt_test/')
+    # not getting results for challenge 3
+    image_test_dir = os.path.join(cfg.data_dir, 'icpr_mtwi_task2/image_test/')
+    txt_test_dir = os.path.join(cfg.data_dir, 'icpr_mtwi_task2/txt_test_%s/'%(cfg.train_task_id))
+    if not os.path.exists(txt_test_dir):
+        os.mkdir(txt_test_dir)
     test_imgname_list = os.listdir(image_test_dir)
     print('found %d test images.' % len(test_imgname_list))
     for test_img_name, _ in zip(test_imgname_list,

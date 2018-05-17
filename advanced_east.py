@@ -19,8 +19,6 @@ from network import East
 from losses import quad_loss
 from data_generator import gen
 
-
-
 east = East()
 east_network = east.east_network()
 east_network.summary()
