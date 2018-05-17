@@ -1,5 +1,5 @@
 .idea/
-saved_model/
+*.h5
 icpr2/
 *pycache*
 .idea
