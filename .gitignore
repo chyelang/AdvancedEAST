@@ -2,3 +2,4 @@
 saved_model/
 icpr2/
 *pycache*
+.idea
