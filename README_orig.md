@@ -52,27 +52,47 @@ See East limitations picked from original paper bellow.
 
 
 # setup
-* python 3.5.0+
-* tensorflow-gpu 1.4.0+(or tensorflow 1.4.0+)
+* python 3.6.3+
+* tensorflow-gpu 1.5.0+(or tensorflow 1.5.0+)
 * keras 2.1.4+
 * numpy 1.14.1+
 * tqdm 4.19.7+
-* h5py
-* PIL
-* tqdm
 
 # training
 * prepare training data:make data root dir(icpr),
 copy images to root dir, and copy txts to root dir,
 data format details could refer to 'ICPR MTWI 2018 挑战赛二：网络图像的文本检测',
 [Link](https://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100066.0.0.3bcad780oQ9Ce4&raceId=231651)
-* modify config params in cfg_local.py or config_server.py, depending on the machine you are running your codes, see default values.
-### you can specify --section local/server --gpu 0/1 for the following commands, or the default --section local --gpu 0 will be used. ###
+* modify config params in cfg.py, see default values.
 * python preprocess.py, resize image to 256*256,384*384,512*512,640*640,736*736,
 and train respectively could speed up training process.
 * python label.py
 * python advanced_east.py
 * python predict.py -p demo/001.png, to predict
+
+# demo results
+![001原图](demo/001.png "001原图")
+![001激活图](demo/001.png_act.jpg "001激活图")
+![001预测图](demo/001.png_predict.jpg "001预测图")
+
+![004原图](demo/004.jpg "004原图")
+![004激活图](demo/004.jpg_act.jpg "004激活图")
+![004预测图](demo/004.jpg_predict.jpg "004预测图")
+
+![005原图](demo/005.png "005原图")
+![005激活图](demo/005.png_act.jpg "005激活图")
+![005预测图](demo/005.png_predict.jpg "005预测图")
+
+![007原图](demo/007.png "007原图")
+![007激活图](demo/007.png_act.jpg "007激活图")
+![007预测图](demo/007.png_predict.jpg "007预测图")
+
+* compared with east based on vgg16
+
+As you can see, although the text area prediction is very accurate, the vertex coordinates are not accurate enough.
+
+![001激活图](demo/001.png_act_east.jpg "001激活图")
+![001预测图](demo/001.png_predict_east.jpg "001预测图")
 
 # License
 The codes are released under the MIT License.
@@ -82,3 +102,4 @@ The codes are released under the MIT License.
 
 * [CTPN:Detecting Text in Natural Image with Connectionist Text Proposal Network](https://arxiv.org/abs/1609.03605)
 
+刚刚接触深度学习，有些地方理解还不够深入，可能会有一些错误，请大家多多包涵指正：）

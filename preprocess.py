@@ -4,7 +4,18 @@ import os
 import random
 from tqdm import tqdm
 
-import cfg
+import argparse
+
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+args = parser.parse_args()
+
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
+
 from label import shrink
 
 def batch_reorder_vertexes(xy_list_array):
@@ -58,7 +69,7 @@ def reorder_vertexes(xy_list):
     # compare slope of 13 and 24, determine the final order
     k13 = k[k_mid]
     k24 = (xy_list[second_v, 1] - xy_list[fourth_v, 1]) / (
-                xy_list[second_v, 0] - xy_list[fourth_v, 0] + cfg.epsilon)
+        xy_list[second_v, 0] - xy_list[fourth_v, 0] + cfg.epsilon)
     if k13 < k24:
         tmp_x, tmp_y = reorder_xy_list[3, 0], reorder_xy_list[3, 1]
         for i in range(2, -1, -1):
@@ -115,7 +126,7 @@ def preprocess():
             # draw on the img
             draw = ImageDraw.Draw(show_gt_im)
             with open(os.path.join(origin_txt_dir,
-                                   o_img_fname[:-4] + '.txt'), 'r') as f:
+                                   o_img_fname[:-4] + '.txt'), 'r', encoding='utf-8') as f:
                 anno_list = f.readlines()
             xy_list_array = np.zeros((len(anno_list), 4, 2))
             for anno, i in zip(anno_list, range(len(anno_list))):

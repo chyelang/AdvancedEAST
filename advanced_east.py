@@ -1,11 +1,23 @@
 import os
+
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.optimizers import Adam
-
-import cfg
+import argparse
 from network import East
 from losses import quad_loss
 from data_generator import gen
+
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+parser.add_argument('--gpu', type=str, default='0',
+                    help='gpu to use')
+args = parser.parse_args()
+os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
 
 east = East()
 east_network = east.east_network()
@@ -15,6 +27,8 @@ east_network.compile(loss=quad_loss, optimizer=Adam(lr=cfg.lr,
                                                     decay=cfg.decay))
 if cfg.load_weights and os.path.exists(cfg.saved_model_weights_file_path):
     east_network.load_weights(cfg.saved_model_weights_file_path)
+
+
 
 east_network.fit_generator(generator=gen(),
                            steps_per_epoch=cfg.steps_per_epoch,

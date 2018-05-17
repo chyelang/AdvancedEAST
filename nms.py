@@ -1,7 +1,16 @@
 # coding=utf-8
 import numpy as np
+import argparse
 
-import cfg
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+args = parser.parse_args()
+
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
 
 
 def should_merge(region, i, j):

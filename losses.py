@@ -1,7 +1,16 @@
 import tensorflow as tf
 
-import cfg
+import argparse
 
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+args = parser.parse_args()
+
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
 
 def quad_loss(y_true, y_pred):
     # loss for inside_score
@@ -30,7 +39,7 @@ def quad_loss(y_true, y_pred):
     positive_weights = tf.cast(tf.equal(y_true[:, :, :, 0], 1), tf.float32)
     side_vertex_code_loss = \
         tf.reduce_sum(tf.reduce_sum(pos + neg, axis=-1) * positive_weights) / (
-                tf.reduce_sum(positive_weights) + cfg.epsilon)
+            tf.reduce_sum(positive_weights) + cfg.epsilon)
     side_vertex_code_loss *= cfg.lambda_side_vertex_code_loss
 
     # loss for side_vertex_coord delta
@@ -39,7 +48,7 @@ def quad_loss(y_true, y_pred):
     vertex_weights = tf.cast(tf.equal(y_true[:, :, :, 1], 1), tf.float32)
     pixel_wise_smooth_l1norm = smooth_l1_loss(g_hat, g_true, vertex_weights)
     side_vertex_coord_loss = tf.reduce_sum(pixel_wise_smooth_l1norm) / (
-            tf.reduce_sum(vertex_weights) + cfg.epsilon)
+        tf.reduce_sum(vertex_weights) + cfg.epsilon)
     side_vertex_coord_loss *= cfg.lambda_side_vertex_coord_loss
     return inside_score_loss + side_vertex_code_loss + side_vertex_coord_loss
 

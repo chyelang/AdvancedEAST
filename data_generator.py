@@ -2,9 +2,17 @@ import os
 import numpy as np
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
+import argparse
 
-import cfg
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+args = parser.parse_args()
 
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
 
 def gen(batch_size=cfg.batch_size, is_val=False):
     img_h, img_w = cfg.max_train_img_size, cfg.max_train_img_size

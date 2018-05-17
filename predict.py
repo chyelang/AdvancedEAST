@@ -5,12 +5,21 @@ from PIL import Image, ImageDraw
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input
 
-import cfg
 from label import point_inside_of_quad
 from network import East
 from preprocess import resize_image
 from nms import nms
 
+import argparse
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+args = parser.parse_args()
+
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
 
 def sigmoid(x):
     """`y = 1 / (1 + exp(-x))`"""

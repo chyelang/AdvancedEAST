@@ -3,7 +3,16 @@ import os
 from tqdm import tqdm
 from network import East
 from predict import predict_txt
-import cfg
+import argparse
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+args = parser.parse_args()
+
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
 
 
 if __name__ == '__main__':

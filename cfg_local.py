@@ -1,6 +1,7 @@
+import os
 train_task_id = '2T384'
 initial_epoch = 0
-epoch_num = 2
+epoch_num = 1
 lr = 1e-3
 decay = 5e-4
 # clipvalue = 0.5  # default 0.5, 0 means no clip
@@ -58,6 +59,13 @@ model_weights_path = 'model/weights_%s.{epoch:03d}-{val_loss:.3f}.h5' \
 saved_model_file_path = 'saved_model/east_model_%s.h5' % train_task_id
 saved_model_weights_file_path = 'saved_model/east_model_weights_%s.h5'\
                                 % train_task_id
+
+if not os.path.exists(os.path.dirname(model_weights_path)):
+    os.mkdir(os.path.dirname(model_weights_path))
+if not os.path.exists(os.path.dirname(saved_model_file_path)):
+    os.mkdir(os.path.dirname(saved_model_file_path))
+if not os.path.exists(os.path.dirname(saved_model_weights_file_path)):
+    os.mkdir(os.path.dirname(saved_model_weights_file_path))
 
 pixel_threshold = 0.9
 side_vertex_pixel_threshold = 0.9

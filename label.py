@@ -2,7 +2,17 @@ import numpy as np
 import os
 from PIL import Image, ImageDraw
 from tqdm import tqdm
-import cfg
+import argparse
+
+parser = argparse.ArgumentParser(description='options')
+parser.add_argument('--section', type=str, default='local',
+                    help='cfg to load')
+args = parser.parse_args()
+
+if args.section == 'local':
+    import cfg_local as cfg
+if args.section == 'server':
+    import cfg_server as cfg
 
 
 def point_inside_of_quad(px, py, quad_xy_list, p_min, p_max):
