@@ -1,7 +1,5 @@
 import os
 import argparse
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
-
 parser = argparse.ArgumentParser(description='options')
 parser.add_argument('--section', type=str, default='local',
                     help='cfg to load')
@@ -11,6 +9,15 @@ if args.section == 'local':
     import cfg_local as cfg
 if args.section == 'server':
     import cfg_server as cfg
+
+from keras import backend as K
+import tensorflow as tf
+
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = cfg.per_process_gpu_memory_fraction
+session = tf.Session(config=config)
+K.set_session(session)
+os.environ["CUDA_VISIBLE_DEVICES"] = cfg.gpu_to_use
 
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 from keras.optimizers import Adam

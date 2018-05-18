@@ -1,3 +1,5 @@
+gpu_to_use = '0'
+per_process_gpu_memory_fraction = 1
 import os
 train_task_id = '0Test256'
 initial_epoch = 0

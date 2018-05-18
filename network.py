@@ -21,7 +21,6 @@ scaled by 32.And the annotations xy need to be scaled by the same ratio
 as height and width respectively.
 """
 
-
 class East:
 
     def __init__(self):

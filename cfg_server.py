@@ -1,3 +1,5 @@
+gpu_to_use = '0'
+per_process_gpu_memory_fraction = 1
 import os
 train_task_id = '1T512'
 initial_epoch = 0
@@ -18,13 +20,13 @@ max_predict_img_size = int(train_task_id[-3:])  # 2400
 assert max_train_img_size in [256, 384, 512, 640, 736], \
     'max_train_img_size must in [256, 384, 512, 640, 736]'
 if max_train_img_size == 256:
-    batch_size = 8
+    batch_size = 32
 elif max_train_img_size == 384:
-    batch_size = 4
+    batch_size = 16
 elif max_train_img_size == 512:
-    batch_size = 2
+    batch_size = 8
 else:
-    batch_size = 1
+    batch_size = 4
 steps_per_epoch = total_img * (1 - validation_split_ratio) // batch_size
 validation_steps = total_img * validation_split_ratio // batch_size
 
