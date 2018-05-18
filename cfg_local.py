@@ -1,5 +1,5 @@
-gpu_to_use = '0'
-per_process_gpu_memory_fraction = 0.3
+gpu_to_use = '-1'
+per_process_gpu_memory_fraction = 1
 import os
 train_task_id = '2T384'
 initial_epoch = 0
@@ -54,6 +54,7 @@ feature_layers_range = range(5, 1, -1)
 feature_layers_num = len(feature_layers_range)
 # pixel_size = 4
 pixel_size = 2 ** feature_layers_range[-1]
+# False is default
 locked_layers = False
 
 model_weights_path = 'model/weights_%s.{epoch:03d}-{val_loss:.3f}.h5' \

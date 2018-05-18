@@ -10,6 +10,7 @@ if args.section == 'local':
 if args.section == 'server':
     import cfg_server as cfg
 
+import keras
 from keras import backend as K
 import tensorflow as tf
 
@@ -35,7 +36,7 @@ if cfg.load_weights and os.path.exists(cfg.saved_model_weights_file_path):
     east_network.load_weights(cfg.saved_model_weights_file_path)
 
 
-
+tbCallBack = keras.callbacks.TensorBoard(log_dir='./graph', histogram_freq=0, write_graph=True, write_images=True)
 east_network.fit_generator(generator=gen(),
                            steps_per_epoch=cfg.steps_per_epoch,
                            epochs=cfg.epoch_num,
@@ -48,6 +49,7 @@ east_network.fit_generator(generator=gen(),
                                ModelCheckpoint(filepath=cfg.model_weights_path,
                                                save_best_only=True,
                                                save_weights_only=True,
-                                               verbose=1)])
+                                               verbose=1),
+                               tbCallBack])
 east_network.save(cfg.saved_model_file_path)
 east_network.save(cfg.saved_model_weights_file_path)

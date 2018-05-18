@@ -1,0 +1,3 @@
+0517 晚上： txt_test_0Test256  val_loss: 0.4020
+
+txt_test_1T512.zip (2018/05/18 20:01:05)  val_loss: 0.3702

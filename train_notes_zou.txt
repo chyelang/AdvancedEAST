@@ -51,3 +51,27 @@ Epoch 6/24
 
 Epoch 00006: val_loss did not improve
 Epoch 00006: early stopping
+
+****************
+Epoch 1/24
+2250/2250 [==============================] - 6699s 3s/step - loss: 0.5607 - val_loss: 0.4936
+
+Epoch 00001: val_loss improved from inf to 0.49363, saving model to /scratch/xzou/AdvancedEAST/model/weights_2T736.001-0.494.h5
+Epoch 2/24
+2250/2250 [==============================] - 6679s 3s/step - loss: 0.4352 - val_loss: 0.4071
+
+Epoch 00002: val_loss improved from 0.49363 to 0.40706, saving model to /scratch/xzou/AdvancedEAST/model/weights_2T736.002-0.407.h5
+Epoch 3/24
+2250/2250 [==============================] - 6675s 3s/step - loss: 0.3924 - val_loss: 0.4015
+
+Epoch 00003: val_loss improved from 0.40706 to 0.40145, saving model to /scratch/xzou/AdvancedEAST/model/weights_2T736.003-0.401.h5
+Epoch 4/24
+2250/2250 [==============================] - 6672s 3s/step - loss: 0.3618 - val_loss: 0.4032
+
+Epoch 00004: val_loss did not improve
+Epoch 5/24
+2250/2250 [==============================] - 6673s 3s/step - loss: 0.3387 - val_loss: 1.3446
+
+Epoch 00005: val_loss did not improve
+Epoch 00005: early stopping
+
