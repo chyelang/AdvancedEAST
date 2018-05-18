@@ -17,11 +17,11 @@ if args.section == 'server':
 from keras import backend as K
 import tensorflow as tf
 
+os.environ["CUDA_VISIBLE_DEVICES"] = cfg.gpu_to_use
 config = tf.ConfigProto()
 config.gpu_options.per_process_gpu_memory_fraction = cfg.per_process_gpu_memory_fraction
 session = tf.Session(config=config)
 K.set_session(session)
-os.environ["CUDA_VISIBLE_DEVICES"] = cfg.gpu_to_use
 
 if __name__ == '__main__':
     east = East()
