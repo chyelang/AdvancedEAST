@@ -23,14 +23,14 @@ assert max_train_img_size in [257, 385, 513, 640, 737], \
     'max_train_img_size must in [257, 385, 513, 640, 737]'
 # assert max_train_img_size in [256, 384, 512, 640, 736], \
 #     'max_train_img_size must in [256, 384, 512, 640, 736]'
-if max_train_img_size == 256:
-    batch_size = 12
-elif max_train_img_size == 384:
-    batch_size = 6
-elif max_train_img_size == 512:
-    batch_size = 3
-else:
+if max_train_img_size == 257:
+    batch_size = 8
+elif max_train_img_size == 385:
+    batch_size = 4
+elif max_train_img_size == 513:
     batch_size = 2
+else:
+    batch_size = 1
 steps_per_epoch = total_img * (1 - validation_split_ratio) // batch_size
 validation_steps = total_img * validation_split_ratio // batch_size
 

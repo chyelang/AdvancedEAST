@@ -21,11 +21,11 @@ max_train_img_size = int(train_task_id[-3:])
 max_predict_img_size = int(train_task_id[-3:])  # 2400
 assert max_train_img_size in [257, 385, 513, 640, 737], \
     'max_train_img_size must in [257, 385, 513, 640, 737]'
-if max_train_img_size == 256:
+if max_train_img_size == 257:
     batch_size = 8
-elif max_train_img_size == 384:
+elif max_train_img_size == 385:
     batch_size = 4
-elif max_train_img_size == 512:
+elif max_train_img_size == 513:
     batch_size = 2
 else:
     batch_size = 1
