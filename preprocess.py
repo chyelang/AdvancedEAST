@@ -104,6 +104,7 @@ def preprocess():
         os.mkdir(train_image_dir)
     if not os.path.exists(train_label_dir):
         os.mkdir(train_label_dir)
+
     draw_gt_quad = cfg.draw_gt_quad
     show_gt_image_dir = os.path.join(data_dir, cfg.show_gt_image_dir_name)
     if not os.path.exists(show_gt_image_dir):

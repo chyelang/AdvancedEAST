@@ -1,7 +1,9 @@
 gpu_to_use = '-1'
 per_process_gpu_memory_fraction = 1
 import os
-train_task_id = '2T384'
+train_task_id = '3T257'
+backbone = 'vgg16'
+# backbone = 'resnet50'
 initial_epoch = 0
 epoch_num = 1
 lr = 1e-3
@@ -17,8 +19,8 @@ total_img = 1000
 validation_split_ratio = 0.1
 max_train_img_size = int(train_task_id[-3:])
 max_predict_img_size = int(train_task_id[-3:])  # 2400
-assert max_train_img_size in [256, 384, 512, 640, 736], \
-    'max_train_img_size must in [256, 384, 512, 640, 736]'
+assert max_train_img_size in [257, 385, 513, 640, 737], \
+    'max_train_img_size must in [257, 385, 513, 640, 737]'
 if max_train_img_size == 256:
     batch_size = 8
 elif max_train_img_size == 384:
@@ -33,15 +35,15 @@ validation_steps = total_img * validation_split_ratio // batch_size
 data_dir = './icpr2/'
 origin_image_dir_name = 'image_1000/'
 origin_txt_dir_name = 'txt_1000/'
-train_image_dir_name = 'images_%s/' % train_task_id
-train_label_dir_name = 'labels_%s/' % train_task_id
-show_gt_image_dir_name = 'show_gt_images_%s/' % train_task_id
-show_act_image_dir_name = 'show_act_images_%s/' % train_task_id
+train_image_dir_name = 'images_%s/' % max_train_img_size
+train_label_dir_name = 'labels_%s/' % max_train_img_size
+show_gt_image_dir_name = 'show_gt_images_%s/' % max_train_img_size
+show_act_image_dir_name = 'show_act_images_%s/' % max_train_img_size
 gen_origin_img = True
-draw_gt_quad = True
-draw_act_quad = True
-val_fname = 'val_%s.txt' % train_task_id
-train_fname = 'train_%s.txt' % train_task_id
+draw_gt_quad = False
+draw_act_quad = False
+val_fname = 'val_%s.txt' % max_train_img_size
+train_fname = 'train_%s.txt' % max_train_img_size
 # in paper it's 0.3, maybe to large to this problem
 shrink_ratio = 0.2
 # pixels between 0.1 and 0.3 are side pixels

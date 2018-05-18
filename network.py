@@ -29,30 +29,32 @@ class East:
                                shape=(None, None, cfg.num_channels),
                                dtype='float32')
         # # use vgg16
-        # vgg16 = VGG16(input_tensor=self.input_img,
-        #               weights='imagenet',
-        #               include_top=False)
-        # if cfg.locked_layers:
-        #     # locked first two conv layers
-        #     locked_layers = [vgg16.get_layer('block1_conv1'),
-        #                      vgg16.get_layer('block1_conv2')]
-        #     for layer in locked_layers:
-        #         layer.trainable = False
-        # self.f = [vgg16.get_layer('block%d_pool' % i).output
-        #           for i in cfg.feature_layers_range]
+        if cfg.backbone == 'vgg16':
+            vgg16 = VGG16(input_tensor=self.input_img,
+                          weights='imagenet',
+                          include_top=False)
+            if cfg.locked_layers:
+                # locked first two conv layers
+                locked_layers = [vgg16.get_layer('block1_conv1'),
+                                 vgg16.get_layer('block1_conv2')]
+                for layer in locked_layers:
+                    layer.trainable = False
+            self.f = [vgg16.get_layer('block%d_pool' % i).output
+                      for i in cfg.feature_layers_range]
 
         # use resnet50
-        resnet50 = keras.applications.resnet50.ResNet50(include_top=False, weights='imagenet', input_tensor=self.input_img)
-        if cfg.locked_layers:
-            # locked first two conv layers
-            # locked_layers = [vgg16.get_layer('block1_conv1'),
-            #                  vgg16.get_layer('block1_conv2')]
-            # for layer in locked_layers:
-            #     layer.trainable = False
-            pass
-        activation_num = [49,40,22,10]
-        self.f = [resnet50.get_layer('activation_%d' % i).output
-                  for i in activation_num]
+        elif cfg.backbone == 'resnet50':
+            resnet50 = keras.applications.resnet50.ResNet50(include_top=False, weights='imagenet', input_tensor=self.input_img)
+            if cfg.locked_layers:
+                # locked first two conv layers
+                # locked_layers = [vgg16.get_layer('block1_conv1'),
+                #                  vgg16.get_layer('block1_conv2')]
+                # for layer in locked_layers:
+                #     layer.trainable = False
+                pass
+            activation_num = [49,40,22,10]
+            self.f = [resnet50.get_layer('activation_%d' % i).output
+                      for i in activation_num]
 
         self.f.insert(0, None)
         self.diff = cfg.feature_layers_range[0] - cfg.feature_layers_num
