@@ -1,16 +1,17 @@
 gpu_to_use = '1'
 per_process_gpu_memory_fraction = 1
 import os
-train_task_id = '3RT513'
-backbone = 'vgg16'
-# backbone = 'resnet50'
+train_task_id = '5RT641'
+load_weights = False
+train_task_id_to_reload_weights = ''
+#backbone = 'vgg16'
+backbone = 'resnet50'
 initial_epoch = 0
 epoch_num = 24
 lr = 1e-3
 decay = 5e-4
 # clipvalue = 0.5  # default 0.5, 0 means no clip
 patience = 2
-load_weights = False
 lambda_inside_score_loss = 4.0
 lambda_side_vertex_code_loss = 1.0
 lambda_side_vertex_coord_loss = 1.0
@@ -19,8 +20,8 @@ total_img = 10000
 validation_split_ratio = 0.1
 max_train_img_size = int(train_task_id[-3:])
 max_predict_img_size = int(train_task_id[-3:])  # 2400
-assert max_train_img_size in [257, 385, 513, 640, 737], \
-    'max_train_img_size must in [257, 385, 513, 640, 737]'
+assert max_train_img_size in [257, 385, 513, 641, 737], \
+    'max_train_img_size must in [257, 385, 513, 641, 737]'
 # assert max_train_img_size in [256, 384, 512, 640, 736], \
 #     'max_train_img_size must in [256, 384, 512, 640, 736]'
 if max_train_img_size == 257:
@@ -65,6 +66,8 @@ model_weights_path = '/scratch/xzou/AdvancedEAST/model/weights_%s.{epoch:03d}-{v
 saved_model_file_path = '/scratch/xzou/AdvancedEAST/saved_model/east_model_%s.h5' % train_task_id
 saved_model_weights_file_path = '/scratch/xzou/AdvancedEAST/saved_model/east_model_weights_%s.h5'\
                                 % train_task_id
+model_weights_file_path_to_reload = '/scratch/xzou/AdvancedEAST/saved_model/east_model_weights_%s.h5'\
+                                % train_task_id_to_reload_weights
 
 if not os.path.exists(os.path.dirname(model_weights_path)):
     os.mkdir(os.path.dirname(model_weights_path))

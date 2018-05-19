@@ -76,5 +76,88 @@ Epoch 00005: val_loss did not improve
 Epoch 00005: early stopping
 
 ****************
+==================================================================================================
+Total params: 25,582,343
+Trainable params: 25,503,495
+Non-trainable params: 78,848
+__________________________________________________________________________________________________
+Epoch 1/24
+4500/4500 [==============================] - 3047s 677ms/step - loss: 0.5020 - val_loss: 0.4261
+
+Epoch 00001: val_loss improved from inf to 0.42612, saving model to /scratch/xzou/AdvancedEAST/model/weights_3RT513.001-0.426.h5
+Epoch 2/24
+4500/4500 [==============================] - 3048s 677ms/step - loss: 0.3880 - val_loss: 0.3890
+
+Epoch 00002: val_loss improved from 0.42612 to 0.38903, saving model to /scratch/xzou/AdvancedEAST/model/weights_3RT513.002-0.389.h5
+Epoch 3/24
+4500/4500 [==============================] - 3049s 677ms/step - loss: 0.3518 - val_loss: 0.3522  *****
+
+Epoch 00003: val_loss improved from 0.38903 to 0.35216, saving model to /scratch/xzou/AdvancedEAST/model/weights_3RT513.003-0.352.h5
+Epoch 4/24
+4500/4500 [==============================] - 3049s 678ms/step - loss: 0.3244 - val_loss: 0.3721
+
+Epoch 00004: val_loss did not improve
+Epoch 5/24
+4500/4500 [==============================] - 3049s 678ms/step - loss: 0.3008 - val_loss: 0.3588
+
+Epoch 00005: val_loss did not improve
+Epoch 00005: early stopping
+
+*****************
+Epoch 00001: val_loss improved from inf to 0.49116, saving model to /scratch/xzou/AdvancedEAST/model/weights_4RT385.001-0.491.h5
+Epoch 2/24
+2250/2250 [==============================] - 1621s 720ms/step - loss: 0.4009 - val_loss: 0.4182
+
+Epoch 00002: val_loss improved from 0.49116 to 0.41824, saving model to /scratch/xzou/AdvancedEAST/model/weights_4RT385.002-0.418.h5
+Epoch 3/24
+2250/2250 [==============================] - 1621s 721ms/step - loss: 0.3649 - val_loss: 0.3930
+
+Epoch 00003: val_loss improved from 0.41824 to 0.39304, saving model to /scratch/xzou/AdvancedEAST/model/weights_4RT385.003-0.393.h5
+Epoch 4/24
+2250/2250 [==============================] - 1622s 721ms/step - loss: 0.3351 - val_loss: 0.3882
+
+Epoch 00004: val_loss improved from 0.39304 to 0.38820, saving model to /scratch/xzou/AdvancedEAST/model/weights_4RT385.004-0.388.h5
+Epoch 5/24
+2250/2250 [==============================] - 1622s 721ms/step - loss: 0.3078 - val_loss: 0.3833
+
+Epoch 00005: val_loss improved from 0.38820 to 0.38326, saving model to /scratch/xzou/AdvancedEAST/model/weights_4RT385.005-0.383.h5
+Epoch 6/24
+2250/2250 [==============================] - 1622s 721ms/step - loss: 0.2853 - val_loss: 0.3812
+
+Epoch 00006: val_loss improved from 0.38326 to 0.38118, saving model to /scratch/xzou/AdvancedEAST/model/weights_4RT385.006-0.381.h5
+Epoch 7/24
+2250/2250 [==============================] - 1621s 721ms/step - loss: 0.2663 - val_loss: 0.3897
+
+Epoch 00007: val_loss did not improve
+Epoch 8/24
+2250/2250 [==============================] - 1618s 719ms/step - loss: 0.2510 - val_loss: 0.4151
+
+Epoch 00008: val_loss did not improve
+Epoch 00008: early stopping
+
+
+**********************
+reload weights!
+Epoch 1/24
+1500/1500 [==============================] - 2174s 1s/step - loss: 0.3652 - val_loss: 0.3929
+
+Epoch 00001: val_loss improved from inf to 0.39287, saving model to /scratch/xzou/AdvancedEAST/model/weights_3RT513.001-0.393.h5
+Epoch 2/24
+1500/1500 [==============================] - 2165s 1s/step - loss: 0.3241 - val_loss: 0.4100
+
+Epoch 00002: val_loss did not improve
+Epoch 3/24
+1500/1500 [==============================] - 2166s 1s/step - loss: 0.2902 - val_loss: 0.3679 ******
+
+Epoch 00003: val_loss improved from 0.39287 to 0.36792, saving model to /scratch/xzou/AdvancedEAST/model/weights_3_1RT513.003-0.368.h5
+Epoch 4/24
+1500/1500 [==============================] - 2166s 1s/step - loss: 0.2676 - val_loss: 0.3735
+
+Epoch 00004: val_loss did not improve
+Epoch 5/24
+1500/1500 [==============================] - 2166s 1s/step - loss: 0.2455 - val_loss: 0.3914
+
+Epoch 00005: val_loss did not improve
+Epoch 00005: early stopping
 
 

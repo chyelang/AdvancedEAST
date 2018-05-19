@@ -34,6 +34,7 @@ east_network.compile(loss=quad_loss, optimizer=Adam(lr=cfg.lr,
                                                     decay=cfg.decay))
 if cfg.load_weights and os.path.exists(cfg.saved_model_weights_file_path):
     east_network.load_weights(cfg.saved_model_weights_file_path)
+    print('reload weights!')
 
 
 tbCallBack = keras.callbacks.TensorBoard(log_dir='./graph', histogram_freq=0, write_graph=True, write_images=True)
