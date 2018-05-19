@@ -1,7 +1,7 @@
 import os
 import argparse
 parser = argparse.ArgumentParser(description='options')
-parser.add_argument('--section', type=str, default='local',
+parser.add_argument('--section', type=str, default='server',
                     help='cfg to load')
 
 args = parser.parse_args()
