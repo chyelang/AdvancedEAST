@@ -1,7 +1,7 @@
-gpu_to_use = '2'
+gpu_to_use = '7'
 per_process_gpu_memory_fraction = 1
 import os
-train_task_id = '1RC641'
+train_task_id = '1RC513'
 load_weights = False
 train_task_id_to_reload_weights = ''
 #backbone = 'vgg16'
@@ -35,7 +35,7 @@ else:
 steps_per_epoch = total_img * (1 - validation_split_ratio) // batch_size
 validation_steps = total_img * validation_split_ratio // batch_size
 
-data_dir = '/home/large_dataset/chenxinyang/icpr2'
+data_dir = '/data/chenxinyang/icpr2'
 origin_image_dir_name = 'image_10000/'
 origin_txt_dir_name = 'txt_10000/'
 train_image_dir_name = 'images_%s/' % max_train_img_size
@@ -61,12 +61,12 @@ feature_layers_num = len(feature_layers_range)
 pixel_size = 2 ** feature_layers_range[-1]
 locked_layers = False
 
-model_weights_path = '/home/large_dataset/chenxinyang/AdvancedEAST/model/weights_%s.{epoch:03d}-{val_loss:.3f}.h5' \
+model_weights_path = '/data/chenxinyang/AdvancedEAST/model/weights_%s.{epoch:03d}-{val_loss:.3f}.h5' \
                      % train_task_id
-saved_model_file_path = '/home/large_dataset/chenxinyang/AdvancedEAST/saved_model/east_model_%s.h5' % train_task_id
-saved_model_weights_file_path = '/home/large_dataset/chenxinyang/AdvancedEAST/saved_model/east_model_weights_%s.h5'\
+saved_model_file_path = '/data/chenxinyang/AdvancedEAST/saved_model/east_model_%s.h5' % train_task_id
+saved_model_weights_file_path = '/data/chenxinyang/AdvancedEAST/saved_model/east_model_weights_%s.h5'\
                                 % train_task_id
-model_weights_file_path_to_reload = '/home/large_dataset/chenxinyang/AdvancedEAST/saved_model/east_model_weights_%s.h5'\
+model_weights_file_path_to_reload = 'data/chenxinyang/AdvancedEAST/saved_model/east_model_weights_%s.h5'\
                                 % train_task_id_to_reload_weights
 
 if not os.path.exists(os.path.dirname(model_weights_path)):

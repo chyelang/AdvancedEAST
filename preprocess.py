@@ -122,7 +122,8 @@ def preprocess():
             d_wight, d_height = cfg.max_train_img_size, cfg.max_train_img_size
             scale_ratio_w = d_wight / im.width
             scale_ratio_h = d_height / im.height
-            im = im.resize((d_wight, d_height), Image.NEAREST).convert('RGB')
+            # orig: NEAREST
+            im = im.resize((d_wight, d_height), Image.ANTIALIAS).convert('RGB')
             show_gt_im = im.copy()
             # draw on the img
             draw = ImageDraw.Draw(show_gt_im)

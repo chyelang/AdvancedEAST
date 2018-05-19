@@ -32,8 +32,8 @@ east_network.summary()
 east_network.compile(loss=quad_loss, optimizer=Adam(lr=cfg.lr,
                                                     # clipvalue=cfg.clipvalue,
                                                     decay=cfg.decay))
-if cfg.load_weights and os.path.exists(cfg.saved_model_weights_file_path):
-    east_network.load_weights(cfg.saved_model_weights_file_path)
+if cfg.load_weights and os.path.exists(cfg.model_weights_file_path_to_reload):
+    east_network.load_weights(cfg.model_weights_file_path_to_reload)
     print('reload weights!')
 
 
