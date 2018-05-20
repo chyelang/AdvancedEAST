@@ -4,9 +4,10 @@ from keras import Input, Model
 from keras.applications.vgg16 import VGG16
 from keras.layers import Concatenate, Conv2D, UpSampling2D, BatchNormalization
 import argparse
+import resnet
 
 parser = argparse.ArgumentParser(description='options')
-parser.add_argument('--section', type=str, default='server',
+parser.add_argument('--section', type=str, default='local',
                     help='cfg to load')
 args = parser.parse_args()
 
@@ -21,6 +22,9 @@ So images's height and width need to be pre-processed to the nearest num that
 scaled by 32.And the annotations xy need to be scaled by the same ratio 
 as height and width respectively.
 """
+def print_layers(model):
+    for layer in model.layers:
+        print('name:%s, output_shape:%s' % (layer.name, str(layer.output.shape)))
 
 class East:
 
@@ -28,6 +32,21 @@ class East:
         self.input_img = Input(name='input_img',
                                shape=(None, None, cfg.num_channels),
                                dtype='float32')
+        # # inception_resnet_v2 = keras.applications.inception_resnet_v2.InceptionResNetV2(include_top=False, weights='imagenet',
+        # #                                                                                 input_shape=(512,512,3))
+        # inception_v3 = keras.applications.inception_v3.InceptionV3(include_top=False, weights='imagenet',
+        #                                                                                 input_shape=(299,299,3))
+        # resnet_101 = resnet.resnet101_model()
+		#
+        # # resnet50 = keras.applications.resnet50.ResNet50(include_top=False, weights='imagenet',
+        # #                                                 input_shape=(512, 512, 3))
+        # # vgg16 = VGG16(input_shape=(513, 513, 3),
+        # #               weights='imagenet',
+        # #               include_top=False)
+        # # input_tensor = self.input_img,
+        # # print_layers(resnet50)
+        # print_layers(resnet_101)
+
         # # use vgg16
         if cfg.backbone == 'vgg16':
             vgg16 = VGG16(input_tensor=self.input_img,
@@ -55,6 +74,20 @@ class East:
             activation_num = [49,40,22,10]
             self.f = [resnet50.get_layer('activation_%d' % i).output
                       for i in activation_num]
+
+        elif cfg.backbone == 'resnet101':
+            resnet101 = resnet.resnet101_model(self.input_img, weights_path=cfg.resnet101_weights_path, no_top=True)
+            if cfg.locked_layers:
+                # locked first two conv layers
+                # locked_layers = [vgg16.get_layer('block1_conv1'),
+                #                  vgg16.get_layer('block1_conv2')]
+                # for layer in locked_layers:
+                #     layer.trainable = False
+                pass
+            layer_names = ['res5c_relu', 'res4b22_relu', 'res3b3_relu', 'res2c_relu']
+            self.f = []
+            for layer_name in layer_names:
+                self.f.append(resnet101.get_layer(layer_name).output)
 
         self.f.insert(0, None)
         self.diff = cfg.feature_layers_range[0] - cfg.feature_layers_num

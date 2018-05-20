@@ -1,11 +1,13 @@
-gpu_to_use = '-1'
+gpu_to_use = '0'
 per_process_gpu_memory_fraction = 1
 import os
 train_task_id = '3Test513'
 load_weights = False
 train_task_id_to_reload_weights = '5RT641'
 #backbone = 'vgg16'
-backbone = 'resnet50'
+# backbone = 'resnet50'
+backbone = 'resnet101'
+resnet101_weights_path = '/home/charles/.keras/models/resnet101_weights_tf.h5'
 initial_epoch = 0
 epoch_num = 1
 lr = 1e-3
@@ -20,7 +22,7 @@ total_img = 100
 validation_split_ratio = 0.1
 max_train_img_size = int(train_task_id[-3:])
 max_predict_img_size = int(train_task_id[-3:])  # 2400
-assert max_train_img_size in [257, 385, 513, 640, 737], \
+assert max_train_img_size in [257, 385, 513, 641, 737], \
     'max_train_img_size must in [257, 385, 513, 640, 737]'
 if max_train_img_size == 257:
     batch_size = 8

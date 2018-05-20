@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 import os
 
-txt_dir = 'txt_test_1T512'
+txt_dir = 'txt_test_3RT513'
 result_dir = "result_"+txt_dir.strip().split('_')[-1]
 if not os.path.exists('submit/' + result_dir):
     os.mkdir('submit/' + result_dir)
