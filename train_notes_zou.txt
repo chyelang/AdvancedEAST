@@ -137,6 +137,7 @@ Epoch 00008: early stopping
 
 
 **********************
+在3RT513训练结果的基础上增大batch size，原来为2，此处应该为6
 reload weights!
 Epoch 1/24
 1500/1500 [==============================] - 2174s 1s/step - loss: 0.3652 - val_loss: 0.3929
@@ -159,5 +160,25 @@ Epoch 5/24
 
 Epoch 00005: val_loss did not improve
 Epoch 00005: early stopping
+
+========================
+在3RT513训练结果的基础上把学习率降低10倍
+reload weights!
+Epoch 1/24
+4500/4500 [==============================] - 3044s 677ms/step - loss: 0.2792 - val_loss: 0.3628
+
+Epoch 00001: val_loss improved from inf to 0.36277, saving model to /scratch/xzou/AdvancedEAST/model/weights_3_2RT513.001-0.363.h5
+Epoch 2/24
+4500/4500 [==============================] - 3040s 676ms/step - loss: 0.2626 - val_loss: 0.3757
+
+Epoch 00002: val_loss did not improve
+Epoch 3/24
+4500/4500 [==============================] - 3041s 676ms/step - loss: 0.2519 - val_loss: 0.3729
+
+Epoch 00003: val_loss did not improve
+Epoch 00003: early stopping
+
+==========================
+
 
 
