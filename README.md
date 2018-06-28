@@ -5,7 +5,7 @@ ModifiedEAST is an algorithm used for Scene image text detect,
 which is primarily based on
 [EAST:An Efficient and Accurate Scene Text Detector](https://arxiv.org/abs/1704.03155v2),
 and the significant improvement was also made,
-which make long text predictions more accurate.
+which make long text predictions more accurate.</br>
 If this project is helpful to you, welcome to star.
 
 # advantages
@@ -16,24 +16,24 @@ If this project is helpful to you, welcome to star.
 * significant improvement was made, long text predictions more accurate.
 
 # project files
-* config file
-    cfg_local.py and cfg_server.py, control parameters.
+* config file</br>
+    cfg_local.py and cfg_server.py, control parameters.</br>
     you need to use --section server argument to use cfg_server.py, or cfg_local is used by default.
-* pre-process data
+* pre-process data</br>
     preprocess.py,resize image
-* label data
+* label data</br>
     label.py,produce label info
-* define network
+* define network</br>
     network.py
-* define loss function
+* define loss function</br>
     losses.py
-* execute training
+* execute training</br>
     advanced_east.py and data_generator.py
-* predict
+* predict</br>
     predict.py and nms.py
-* auxiliary
-    resnet.py: build and load pretrained weights for Resnet101, since it's not provided by Keras.
-    tianchi_submit.py: generate coordinates of text block into .txt for test files.
+* auxiliary</br>
+    resnet.py: build and load pretrained weights for Resnet101, since it's not provided by Keras.</br>
+    tianchi_submit.py: generate coordinates of text block into .txt for test files.</br>
     tianchi_check.py: draw text block on image for test images to verify the results.
 
 # network arch
