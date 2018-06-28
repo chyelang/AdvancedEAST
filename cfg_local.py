@@ -1,12 +1,12 @@
-gpu_to_use = '0'
+gpu_to_use = '-1'
 per_process_gpu_memory_fraction = 1
 import os
-train_task_id = '3Test513'
+train_task_id = '2Test257'
 load_weights = False
 train_task_id_to_reload_weights = '5RT641'
 #backbone = 'vgg16'
-# backbone = 'resnet50'
-backbone = 'resnet101'
+backbone = 'resnet50'
+# backbone = 'resnet101'
 resnet101_weights_path = '/home/charles/.keras/models/resnet101_weights_tf.h5'
 initial_epoch = 0
 epoch_num = 1
@@ -21,7 +21,7 @@ lambda_side_vertex_coord_loss = 1.0
 total_img = 100
 validation_split_ratio = 0.1
 max_train_img_size = int(train_task_id[-3:])
-max_predict_img_size = int(train_task_id[-3:])  # 2400
+max_predict_img_size = int(train_task_id[-3:]) + 32  # 2400
 assert max_train_img_size in [257, 385, 513, 641, 737], \
     'max_train_img_size must in [257, 385, 513, 640, 737]'
 if max_train_img_size == 257:
@@ -71,14 +71,15 @@ model_weights_file_path_to_reload = 'saved_model/east_model_weights_%s.h5'\
                                 % train_task_id_to_reload_weights
 
 if not os.path.exists(os.path.dirname(model_weights_path)):
-    os.mkdir(os.path.dirname(model_weights_path))
-if not os.path.exists(os.path.dirname(saved_model_file_path)):
     os.mkdir(os.path.dirname(saved_model_file_path))
 if not os.path.exists(os.path.dirname(saved_model_weights_file_path)):
     os.mkdir(os.path.dirname(saved_model_weights_file_path))
 
-pixel_threshold = 0.9
-side_vertex_pixel_threshold = 0.9
-trunc_threshold = 0.1
+# pixel_threshold = 0.9
+# side_vertex_pixel_threshold = 0.9
+# trunc_threshold = 0.1
+pixel_threshold = 0.85
+side_vertex_pixel_threshold = 0.60 #在nms.py中起作用  越小框越多，但是框得不完全
+trunc_threshold = 0.40  #不能是0  越小框越少
 predict_cut_text_line = False
 predict_write2txt = True

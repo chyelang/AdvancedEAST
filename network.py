@@ -99,6 +99,7 @@ class East:
             str(cfg.feature_layers_range)
         if i == cfg.feature_layers_num:
             bn = BatchNormalization()(self.h(i))
+            # was 32 here
             return Conv2D(32, 3, activation='relu', padding='same')(bn)
         else:
             return UpSampling2D((2, 2))(self.h(i))
@@ -113,9 +114,11 @@ class East:
         else:
             concat = Concatenate(axis=-1)([self.g(i - 1), self.f[i]])
             bn1 = BatchNormalization()(concat)
+            # was 128
             conv_1 = Conv2D(128 // 2 ** (i - 2), 1,
                             activation='relu', padding='same',)(bn1)
             bn2 = BatchNormalization()(conv_1)
+            # was 128
             conv_3 = Conv2D(128 // 2 ** (i - 2), 3,
                             activation='relu', padding='same',)(bn2)
             return conv_3

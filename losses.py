@@ -36,6 +36,7 @@ def quad_loss(y_true, y_pred):
                                                     cfg.epsilon)
     neg = -1 * (1 - vertex_beta) * (1 - vertex_labels) * tf.log(
         1 - vertex_predicts + cfg.epsilon)
+    # tf.equal(y_true[:, :, :, 0], 1)其实跟y_true[:, :, :, 0]的值是一样的, positive_weights相当于是一个mask
     positive_weights = tf.cast(tf.equal(y_true[:, :, :, 0], 1), tf.float32)
     side_vertex_code_loss = \
         tf.reduce_sum(tf.reduce_sum(pos + neg, axis=-1) * positive_weights) / (

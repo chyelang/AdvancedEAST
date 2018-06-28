@@ -171,6 +171,9 @@ def process_label(data_dir=cfg.data_dir):
                                        (px - 0.5 * cfg.pixel_size,
                                         py - 0.5 * cfg.pixel_size)],
                                       width=line_width, fill=line_color)
+                            # if sum(gt[i,j,:]) == 0 and gt[i,j,1]==1 and gt[i,j,2]==0:
+                            if gt[i, j, 0] == 0:
+                                print(gt[i,j,:])
             act_image_dir = os.path.join(cfg.data_dir,
                                          cfg.show_act_image_dir_name)
             if cfg.draw_act_quad:
